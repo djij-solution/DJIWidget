@@ -30,13 +30,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 
   s.author       = { "DJI SDK" => "dev@dji.com" }
-  s.source       = { :git => 'https://github.com/dji-sdk/DJIWidget.git', :tag => s.version.to_s, :submodules => true }
+  s.source       = { :git => 'https://github.com/djij-solution/DJIWidget.git', :tag => s.version.to_s, :submodules => true }
   s.requires_arc = true
   s.platform     = :ios, '8.0'
   s.source_files = 'DJIWidget/**/*.{h,m,c}'
   s.ios.public_header_files = 'DJIWidget/**/*.{h}'
   s.ios.vendored_frameworks = 'FFmpeg/FFmpeg.framework'
-  s.xcconfig = { 'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/DJIWidget/FFmpeg/FFmpeg.framework/Headers" "$(PODS_ROOT)/Headers/Public/DJIWidget/FFmpeg/.."/**'}
+  s.xcconfig = { 'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/DJIWidget/FFmpeg/FFmpeg.framework/Headers"'}
   s.pod_target_xcconfig = {'ENABLE_BITCODE' => 'NO'}
 
 end
