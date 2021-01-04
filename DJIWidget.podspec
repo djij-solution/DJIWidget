@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DJIWidget"
-  s.version      = "1.1.1"
+  s.version      = "1.6.4.1"
   s.summary      = "DJIWidget for DJI iOS Mobile SDK"
   s.homepage     = "https://github.com/dji-sdk/DJIWidget"
   s.license      = { :type => 'CUSTOM', :text => <<-LICENSE
@@ -32,11 +32,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   s.author       = { "DJI SDK" => "dev@dji.com" }
   s.source       = { :git => 'https://github.com/djij-solution/DJIWidget.git', :tag => s.version.to_s, :submodules => true }
   s.requires_arc = true
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '9.0'
   s.source_files = 'DJIWidget/**/*.{h,m,c}'
   s.ios.public_header_files = 'DJIWidget/**/*.{h}'
   s.ios.vendored_frameworks = 'FFmpeg/FFmpeg.framework'
-  s.xcconfig = { 'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/DJIWidget/FFmpeg/FFmpeg.framework/Headers"'}
-  s.pod_target_xcconfig = {'ENABLE_BITCODE' => 'NO'}
 
+  # s.xcconfig = { 'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/DJIWidget/FFmpeg/FFmpeg.framework/Headers"'}
+
+  s.xcconfig = { 'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/DJIWidget/FFmpeg/FFmpeg.framework/Headers" "$(PODS_ROOT)/Headers/Public/DJIWidget/FFmpeg/.."/**', 'OTHER_LDFLAGS' => '"$(inherited)" -framework "FFmpeg"'}
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 armv7 i386', "EXCLUDED_ARCHS[sdk=iphoneos*]" => "x86_64 armv7 i386"}
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 armv7 i386', "EXCLUDED_ARCHS[sdk=iphoneos*]" => "x86_64 armv7 i386"}
 end
